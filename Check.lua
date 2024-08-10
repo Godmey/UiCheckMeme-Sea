@@ -21,7 +21,7 @@ function Alert:create(desc)
     Frame.Parent = game.CoreGui.AlertFrame 
     Frame.BackgroundColor3 = _G.Dark
     Frame.BackgroundTransparency = .1
-    Frame.Position = UDim2.new(1, 0, 0, 0)
+    Frame.Position = UDim2.new(0.5, -100, 0, 10)  -- Center horizontally and position it 10 pixels from the top
     Frame.Size = UDim2.new(0, 200, 0, 60)
 
     local stroke = Instance.new("UIStroke")
@@ -64,6 +64,7 @@ function Alert:create(desc)
     UICorner.CornerRadius = UDim.new(0, 5)
     UICorner.Parent = Frame
 
-    Frame:TweenPosition(UDim2.new(1, -200, 0, 0),"Out","Quad",0.4,true)
+    Frame:TweenPosition(UDim2.new(0.5, -100, 0, 10), "Out", "Quad", 0.4, true)
 end
+
 return Alert
