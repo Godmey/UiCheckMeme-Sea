@@ -66,7 +66,7 @@ function Alert:create(desc)
 
     Frame:TweenPosition(UDim2.new(0.5, -100, 0, 10), "Out", "Quad", 0.4, true)
 
-    function Alert:SetTextLabels(newDesc)
+    function Alert:SetText(newDesc)
         Desc.Text = newDesc
     end
 end
