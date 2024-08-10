@@ -38,7 +38,8 @@ function Xameitz:create(desc)
     Frame.BackgroundColor3 = All["Background"]
     Frame.BackgroundTransparency = .1
     Frame.Size = UDim2.new(0, self.UiWidth, 0, 60)
-    Frame.Position = UDim2.new(0.5, -self.UiWidth/2, 0, 10)
+    Frame.Position = UDim2.new(0.5, -self.UiWidth/2, 0, -60)
+    Frame:TweenPosition(UDim2.new(0.5, -self.UiWidth/2, 0, 10), "Out", "Quad", 0.4, true)
 
     local stroke = Instance.new("UIStroke")
     stroke.Color = All["Stroke"]
@@ -80,7 +81,6 @@ function Xameitz:create(desc)
     UICorner.CornerRadius = UDim.new(0, 5)
     UICorner.Parent = Frame
 
-    Frame:TweenPosition(UDim2.new(0.5, -self.UiWidth/2, 0, 10), "Out", "Quad", 0.4, true)
     self.Desc = Desc
 end
 
@@ -91,4 +91,3 @@ function Xameitz:SetText(newDesc)
 end
 
 return Xameitz
-
