@@ -12,6 +12,11 @@ function Xameitz.new()
     return instance
 end
 
+function Xameitz:Add(config)
+    self.Name = config.Name or "nil"
+    self.Image = config.Image or "nil"
+end
+
 function Xameitz:create(desc)
     if XameitzFrame:FindFirstChild("Frame") then
         XameitzFrame.Frame:Destroy()
@@ -47,7 +52,7 @@ function Xameitz:create(desc)
     Image.BackgroundTransparency = 1.000
     Image.Position = UDim2.new(0, 8, 0, 8)
     Image.Size = UDim2.new(0, 45, 0, 45)
-    Image.Image = "rbxassetid://18763592606"
+    Image.Image = self.Image
 
     Title.Parent = Frame
     Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
@@ -55,7 +60,7 @@ function Xameitz:create(desc)
     Title.Position = UDim2.new(0, 55, 0, 14)
     Title.Size = UDim2.new(0, 10, 0, 20)
     Title.Font = Enum.Font.GothamBold
-    Title.Text = "Xameitz Hub"
+    Title.Text = self.Name
     Title.TextColor3 = Color3.fromRGB(255, 255, 255)
     Title.TextSize = 16.000
     Title.TextXAlignment = Enum.TextXAlignment.Left
