@@ -21,7 +21,7 @@ function Alert:create(desc)
     Frame.Parent = game.CoreGui.AlertFrame 
     Frame.BackgroundColor3 = _G.Dark
     Frame.BackgroundTransparency = .1
-    Frame.Position = UDim2.new(0.5, -100, 0, 10)  -- Center horizontally and position it 10 pixels from the top
+    Frame.Position = UDim2.new(0.5, -100, -0.2, 0)  -- Start above the visible screen
     Frame.Size = UDim2.new(0, 200, 0, 60)
 
     local stroke = Instance.new("UIStroke")
