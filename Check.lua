@@ -1,34 +1,45 @@
-local AlertFrame = Instance.new("ScreenGui")
-AlertFrame.Name = "AlertFrame"
-AlertFrame.Parent = game.CoreGui
-AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
-local Alert = {}
-function Alert:create(desc)
-    if game.CoreGui:FindFirstChild("AlertFrame") then
-        local alertFrame = game.CoreGui.AlertFrame
-        if alertFrame:FindFirstChild("Frame") then
-            alertFrame.Frame:Destroy()
-        end
+local XameitzFrame = Instance.new("ScreenGui")
+XameitzFrame.Name = "XameitzFrame"
+XameitzFrame.Parent = game.CoreGui
+XameitzFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global
+
+local Xameitz = {}
+Xameitz.__index = Xameitz
+
+function Xameitz.new()
+    local instance = setmetatable({}, Xameitz)
+    return instance
+end
+
+function Xameitz:create(desc)
+    if XameitzFrame:FindFirstChild("Frame") then
+        XameitzFrame.Frame:Destroy()
     end
-    
+
+    local All = {
+        ["Stroke"] = Color3.fromRGB(75, 0, 130),
+        ["Background"] = Color3.fromRGB(30, 30, 30),
+    }
+
     local Frame = Instance.new("Frame")
     local Image = Instance.new("ImageLabel")
     local Title = Instance.new("TextLabel")
     local Desc = Instance.new("TextLabel")
     local UICorner = Instance.new("UICorner")
+
     Frame.Name = "Frame"
-    Frame.Parent = game.CoreGui.AlertFrame 
-    Frame.BackgroundColor3 = _G.Dark
+    Frame.Parent = XameitzFrame
+    Frame.BackgroundColor3 = All["Background"]
     Frame.BackgroundTransparency = .1
     Frame.Position = UDim2.new(0.5, -100, -0.2, 0)
     Frame.Size = UDim2.new(0, 200, 0, 60)
 
     local stroke = Instance.new("UIStroke")
-    stroke.Color = _G.Primary
+    stroke.Color = All["Stroke"]
     stroke.Thickness = 1
     stroke.Transparency = 0
-    stroke.Parent = Frame 
+    stroke.Parent = Frame
 
     Image.Name = "Icon"
     Image.Parent = Frame
@@ -36,8 +47,8 @@ function Alert:create(desc)
     Image.BackgroundTransparency = 1.000
     Image.Position = UDim2.new(0, 8, 0, 8)
     Image.Size = UDim2.new(0, 45, 0, 45)
-    Image.Image = "rbxassetid://18763592606" 
-    
+    Image.Image = "rbxassetid://18763592606"
+
     Title.Parent = Frame
     Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
     Title.BackgroundTransparency = 1.000
@@ -60,15 +71,18 @@ function Alert:create(desc)
     Desc.TextColor3 = Color3.fromRGB(200, 200, 200)
     Desc.TextSize = 12.000
     Desc.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     UICorner.CornerRadius = UDim.new(0, 5)
     UICorner.Parent = Frame
 
     Frame:TweenPosition(UDim2.new(0.5, -100, 0, 10), "Out", "Quad", 0.4, true)
+    self.Desc = Desc
+end
 
-    function Alert:SetText(newDesc)
-        Desc.Text = newDesc
+function Xameitz:SetText(newDesc)
+    if self.Desc then
+        self.Desc.Text = newDesc
     end
 end
 
-return Alert
+return Xameitz
