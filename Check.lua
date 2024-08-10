@@ -1,17 +1,13 @@
-local AlertFrame = Instance.new("ScreenGui")
-AlertFrame.Name = "AlertFrame"
-AlertFrame.Parent = game.CoreGui
-AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global
-
 local Alert = {}
 function Alert:create(desc)
+    -- Create Alert Frame
     if game.CoreGui:FindFirstChild("AlertFrame") then
         local alertFrame = game.CoreGui.AlertFrame
         if alertFrame:FindFirstChild("Frame") then
             alertFrame.Frame:Destroy()
         end
     end
-    
+
     local Frame = Instance.new("Frame")
     local Image = Instance.new("ImageLabel")
     local Title = Instance.new("TextLabel")
@@ -66,9 +62,15 @@ function Alert:create(desc)
 
     Frame:TweenPosition(UDim2.new(0.5, -100, 0, 10), "Out", "Quad", 0.4, true)
 
-    function Alert:SetText(newDesc)
-        Desc.Text = newDesc
+    local alertObj = {
+        Desc = Desc
+    }
+
+    function alertObj:SetText(newDesc)
+        self.Desc.Text = newDesc
     end
+
+    return alertObj
 end
 
 return Alert
