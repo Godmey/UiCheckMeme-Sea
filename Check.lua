@@ -4,7 +4,7 @@ AlertFrame.Parent = game.CoreGui
 AlertFrame.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
 local Alert = {}
-function Alert:create(desc)
+function Alert:create(desc, titleText)
     if game.CoreGui:FindFirstChild("AlertFrame") then
         local alertFrame = game.CoreGui.AlertFrame
         if alertFrame:FindFirstChild("Frame") then
@@ -44,7 +44,7 @@ function Alert:create(desc)
     Title.Position = UDim2.new(0, 55, 0, 14)
     Title.Size = UDim2.new(0, 10, 0, 20)
     Title.Font = Enum.Font.GothamBold
-    Title.Text = "Xameitz Hub"
+    Title.Text = titleText or "Xameitz Hub"
     Title.TextColor3 = Color3.fromRGB(255, 255, 255)
     Title.TextSize = 16.000
     Title.TextXAlignment = Enum.TextXAlignment.Left
@@ -66,12 +66,8 @@ function Alert:create(desc)
 
     Frame:TweenPosition(UDim2.new(0.5, -100, 0, 10), "Out", "Quad", 0.4, true)
 
-    self.Desc = Desc
-end
-
-function Alert:SetTextLabel(newText)
-    if self.Desc then
-        self.Desc.Text = newText
+    function Alert:SetTextLabels(newDesc)
+        Desc.Text = newDesc
     end
 end
 
