@@ -1,4 +1,3 @@
-
 local XameitzFrame = Instance.new("ScreenGui")
 XameitzFrame.Name = "XameitzFrame"
 XameitzFrame.Parent = game.CoreGui
@@ -15,6 +14,7 @@ end
 function Xameitz:Add(config)
     self.Name = config.Name or "nil"
     self.Image = config.Image or "nil"
+    self.UiWidth = config.UiWidth or 200
 end
 
 function Xameitz:create(desc)
@@ -37,8 +37,8 @@ function Xameitz:create(desc)
     Frame.Parent = XameitzFrame
     Frame.BackgroundColor3 = All["Background"]
     Frame.BackgroundTransparency = .1
-    Frame.Position = UDim2.new(0.5, -100, -0.2, 0)
-    Frame.Size = UDim2.new(0, 200, 0, 60)
+    Frame.Size = UDim2.new(0, self.UiWidth, 0, 60)
+    Frame.Position = UDim2.new(0.5, -self.UiWidth/2, 0, 10)
 
     local stroke = Instance.new("UIStroke")
     stroke.Color = All["Stroke"]
@@ -58,7 +58,7 @@ function Xameitz:create(desc)
     Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
     Title.BackgroundTransparency = 1.000
     Title.Position = UDim2.new(0, 55, 0, 14)
-    Title.Size = UDim2.new(0, 10, 0, 20)
+    Title.Size = UDim2.new(0, self.UiWidth - 55, 0, 20)
     Title.Font = Enum.Font.GothamBold
     Title.Text = self.Name
     Title.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -69,7 +69,7 @@ function Xameitz:create(desc)
     Desc.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
     Desc.BackgroundTransparency = 1.000
     Desc.Position = UDim2.new(0, 55, 0, 33)
-    Desc.Size = UDim2.new(0, 10, 0, 10)
+    Desc.Size = UDim2.new(0, self.UiWidth - 55, 0, 10)
     Desc.Font = Enum.Font.GothamSemibold
     Desc.TextTransparency = .3
     Desc.Text = desc
@@ -80,7 +80,7 @@ function Xameitz:create(desc)
     UICorner.CornerRadius = UDim.new(0, 5)
     UICorner.Parent = Frame
 
-    Frame:TweenPosition(UDim2.new(0.5, -100, 0, 10), "Out", "Quad", 0.4, true)
+    Frame:TweenPosition(UDim2.new(0.5, -self.UiWidth/2, 0, 10), "Out", "Quad", 0.4, true)
     self.Desc = Desc
 end
 
@@ -91,3 +91,4 @@ function Xameitz:SetText(newDesc)
 end
 
 return Xameitz
+
